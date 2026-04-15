@@ -1,0 +1,230 @@
+<div class="container-fluid py-4 px-2 px-md-4" *ngIf="UsuarioActual">
+  <div class="row g-4">
+
+    <!-- CABECERA DEL PERFIL -->
+    <div class="col-12">
+      <mat-card class="shadow-sm">
+        <div class="row align-items-center g-3">
+
+          <!-- FOTO -->
+          <div class="col-12 col-md-2 text-center">
+            <img [src]="UsuarioActual.Foto || 'assets/icons/user.svg'" alt="Foto usuario"
+              class="img-fluid rounded-circle border" width="120" height="120" />
+          </div>
+
+          <!-- DATOS PRINCIPALES -->
+          <div class="col-12 col-md-7 text-center text-md-start">
+            <div class="d-flex flex-column gap-2">
+              <div>
+                <h2 class="mb-1 fw-bold">{{ UsuarioActual.NombreCompleto }}</h2>
+                <div class="d-flex flex-column flex-md-row align-items-center align-items-md-start gap-2">
+                  <mat-chip color="primary" selected>
+                    <mat-icon matChipAvatar>badge</mat-icon>
+                    {{ Role?.Nombre }}
+                  </mat-chip>
+                </div>
+              </div>
+
+              <div class="text-muted">
+                <div
+                  class="d-flex flex-column flex-md-row gap-2 gap-md-4 justify-content-center justify-content-md-start">
+                  <span class="d-flex align-items-center justify-content-center justify-content-md-start gap-1">
+                    <mat-icon>mail</mat-icon>
+                    {{ UsuarioActual.Email }}
+                  </span>
+                  <span class="d-flex align-items-center justify-content-center justify-content-md-start gap-1">
+                    <mat-icon>person</mat-icon>
+                    {{ UsuarioActual.Usuario }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACCIONES -->
+          <div class="col-12 col-md-3">
+            <div class="d-grid gap-2">
+              <button mat-raised-button color="primary" class="w-100"
+                (click)="eventoMostrarPopupEditarProfile(UsuarioActual)">
+                <mat-icon>edit</mat-icon>
+                Editar perfil
+              </button>
+
+              <button mat-stroked-button color="accent" class="w-100"
+                (click)="eventoMostrarPopupEditarEmail(UsuarioActual)">
+                <mat-icon>alternate_email</mat-icon>
+                Cambiar correo
+              </button>
+
+              <button mat-stroked-button color="warn" class="w-100"
+                (click)="eventoMostrarPopupEditarPassword(UsuarioActual)">
+                <mat-icon>lock_reset</mat-icon>
+                Cambiar contraseña
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- INFORMACIÓN PERSONAL -->
+    <div class="col-12 col-xl-8">
+      <mat-card class="shadow-sm h-100">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+          <div class="d-flex align-items-center gap-2">
+            <mat-icon color="primary">account_circle</mat-icon>
+            <h4 class="mb-0 fw-semibold">Información personal</h4>
+          </div>
+
+          <mat-chip color="primary" selected>
+            Perfil activo
+          </mat-chip>
+        </div>
+
+        <mat-divider class="mb-3"></mat-divider>
+
+        <div class="row g-3">
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Nombre</div>
+                <div class="fw-semibold">{{ UsuarioActual.Nombre }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Apellido paterno</div>
+                <div class="fw-semibold">{{ UsuarioActual.ApellidoPaterno }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Apellido materno</div>
+                <div class="fw-semibold">{{ UsuarioActual.ApellidoMaterno }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Correo electrónico</div>
+                <div class="fw-semibold">{{ UsuarioActual.Email }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Usuario</div>
+                <div class="fw-semibold">{{ UsuarioActual.Usuario }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div class="text-muted small mb-1">Rol del sistema</div>
+                <div class="fw-semibold">{{ Role?.Nombre }}</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- PANEL LATERAL -->
+    <div class="col-12 col-xl-4">
+      <div class="row g-4">
+
+        <!-- SEGURIDAD -->
+        <div class="col-12">
+          <mat-card class="shadow-sm">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <mat-icon color="warn">security</mat-icon>
+              <h4 class="mb-0 fw-semibold">Seguridad</h4>
+            </div>
+
+            <mat-divider class="mb-3"></mat-divider>
+
+            <mat-list>
+              <mat-list-item>
+                <mat-icon matListItemIcon>verified_user</mat-icon>
+                <div matListItemTitle>Rol asignado</div>
+                <div matListItemLine>{{ Role?.Nombre }}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <mat-icon matListItemIcon>mail</mat-icon>
+                <div matListItemTitle>Correo registrado</div>
+                <div matListItemLine>{{ UsuarioActual.Email }}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <mat-icon matListItemIcon>person</mat-icon>
+                <div matListItemTitle>Usuario</div>
+                <div matListItemLine>{{ UsuarioActual.Usuario }}</div>
+              </mat-list-item>
+            </mat-list>
+
+            <div class="d-grid gap-2 mt-3">
+              <button mat-stroked-button color="warn" class="w-100"
+                (click)="eventoMostrarPopupEditarPassword(UsuarioActual)">
+                <mat-icon>vpn_key</mat-icon>
+                Actualizar contraseña
+              </button>
+
+              <button mat-stroked-button color="primary" class="w-100"
+                (click)="eventoMostrarPopupEditarEmail(UsuarioActual)">
+                <mat-icon>forward_to_inbox</mat-icon>
+                Actualizar correo
+              </button>
+            </div>
+          </mat-card>
+        </div>
+
+        <!-- RESUMEN -->
+        <div class="col-12">
+          <mat-card class="shadow-sm">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <mat-icon color="primary">insights</mat-icon>
+              <h4 class="mb-0 fw-semibold">Resumen de cuenta</h4>
+            </div>
+
+            <mat-divider class="mb-3"></mat-divider>
+
+            <div class="d-flex flex-column gap-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Estado</span>
+                <mat-chip color="primary" selected>Activo</mat-chip>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Rol</span>
+                <span class="fw-semibold">{{ Role?.Nombre }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Usuario</span>
+                <span class="fw-semibold">{{ UsuarioActual.Usuario }}</span>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

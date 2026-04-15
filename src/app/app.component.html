@@ -1,0 +1,15 @@
+<ng-container *ngIf="Loginloaded">
+  <ng-container *ngIf="isAuthenticated; else publicView">
+    <app-menu-lateral (cerrarSesion)="onLogout()">
+      <ng-container Body>
+        <router-outlet></router-outlet>
+      </ng-container>
+    </app-menu-lateral>
+  </ng-container>
+
+  <ng-template #publicView>
+    <router-outlet></router-outlet>
+  </ng-template>
+</ng-container>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

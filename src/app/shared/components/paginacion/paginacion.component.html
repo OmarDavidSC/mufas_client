@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12 text-center">
+    <button mat-icon-button [disabled]="_page === 1" (click)="PageSelection(1)" matTooltip="Primera página">
+      <mat-icon>first_page</mat-icon>
+    </button>
+    <button mat-icon-button [disabled]="_page === 1" (click)="PageSelection((_page || 1) - 1)" matTooltip="Página anterior">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <ng-container *ngFor="let p of _pageList">
+      <ng-container *ngIf="_page !== p; else CurrentPage">
+        <button mat-icon-button (click)="PageSelection(p)">
+          {{p}}
+        </button>
+      </ng-container>
+      <ng-template #CurrentPage>
+        <button color="primary" mat-mini-fab>
+          {{p}}
+        </button>
+      </ng-template>
+    </ng-container>
+    <button mat-icon-button [disabled]="_page === _lastPage" (click)="PageSelection((_page || 1) + 1)" matTooltip="Siguiente página">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <button mat-icon-button [disabled]="_page === _lastPage" (click)="PageSelection(_lastPage || 1)" matTooltip="Última página">
+      <mat-icon>last_page</mat-icon>
+    </button>
+  </div>
+</div>
+

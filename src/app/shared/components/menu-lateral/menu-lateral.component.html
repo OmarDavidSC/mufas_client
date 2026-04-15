@@ -1,0 +1,72 @@
+<mat-sidenav-container style="height: 100vh;">
+    <mat-sidenav #drawer mode="over" [opened]="false" [autoFocus]="false" [style.width]="'300px'" class="bg-light">
+        <div class="text-center py-3 border-bottom">
+            <img src="../../../assets/img/logoe.png" alt="Logo" class="img-fluid rounded-circle"
+                style="max-width: 80px;">
+        </div>
+        <mat-nav-list class="py-2">
+            <a mat-list-item (click)="navigateTo(menuItems[0].route)">
+                <mat-icon class="me-3">{{ menuItems[0].icon }}</mat-icon>
+                <span>{{ menuItems[0].label }}</span>
+            </a>
+        </mat-nav-list>
+        <mat-accordion displayMode="flat" class="py-2">
+            <mat-expansion-panel *ngFor="let item of menuItems.slice(1)" [expanded]="false" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon class="me-3">{{ item.icon }}</mat-icon>
+                        {{ item.label }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-container *ngIf="item.children; else noChildren">
+                    <mat-nav-list>
+                        <a mat-list-item *ngFor="let child of item.children" (click)="navigateTo(child.route)">
+                            <mat-icon class="me-3">{{ child.icon }}</mat-icon>
+                            <span>{{ child.label }}</span>
+                        </a>
+                    </mat-nav-list>
+                </ng-container>
+                <ng-template #noChildren>
+                    <mat-nav-list>
+                        <a mat-list-item (click)="navigateTo(item.route)">
+                            <mat-icon class="me-3">{{ item.icon }}</mat-icon>
+                            <span>{{ item.label }}</span>
+                        </a>
+                    </mat-nav-list>
+                </ng-template>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" class="px-3 d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <button mat-icon-button (click)="drawer.toggle()" matTooltip="Abrir menú">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span class="fw-bold d-none d-md-inline">GESTIÓN CONTRATOS</span>
+                <span class="fw-bold d-md-none">GC</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <mat-divider [vertical]="true" class="mx-2 d-none d-md-block"></mat-divider>
+                <button mat-button [matMenuTriggerFor]="userMenu" class="d-flex align-items-center">
+                    <span class="me-2 d-none d-lg-inline">¡Hola! {{UsuarioActual?.NombreCompleto}}</span>
+                    <img [src]="UsuarioActual?.Foto || 'assets/icons/user.svg'" alt="Usuario" class="rounded-circle"
+                        width="36" height="36" style="object-fit: cover;">
+                </button>
+            </div>
+            <mat-menu #userMenu="matMenu">
+                <button mat-menu-item (click)="irAPerfil()">
+                    <mat-icon>person_outline</mat-icon>
+                    <span>Mi Perfil</span>
+                </button>
+                <button mat-menu-item (click)="OnClickLogout()">
+                    <mat-icon>power_settings_new</mat-icon>
+                    <span>Cerrar sesión</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+        <div>
+            <ng-content select="[Body]"></ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

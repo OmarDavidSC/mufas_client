@@ -1,0 +1,144 @@
+<div *ngIf="datos.tipoModal == 'success'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>Correcto</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="green">
+        check_circle_outline
+      </mat-icon>
+      <br>
+      <span>{{datos.mensaje}}</span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Aceptar</button>
+  </div>
+</div>
+
+<div *ngIf="datos.tipoModal == 'warning'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>Alerta</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="yellow">
+        report_problem
+      </mat-icon>
+      <br>
+      <span>{{datos.mensaje}}</span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Aceptar</button>
+  </div>
+</div>
+
+<div *ngIf="datos.tipoModal == 'warningWithActions'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>Alerta</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="yellow">
+        report_problem
+      </mat-icon>
+      <br>
+      <span>{{datos.mensaje}}</span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Cerrar</button>
+  </div>
+</div>
+
+<div *ngIf="datos.tipoModal == 'confirm'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>Confirmación</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="green">
+        check_circle_outline
+      </mat-icon>
+      <br>
+      <span>{{datos.mensaje}}</span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-stroked-button [mat-dialog-close]="false" color="primary">No</button>
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Sí</button>
+  </div>
+</div>
+
+<div *ngIf="datos.tipoModal == 'error'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>Error</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="red">
+        error
+      </mat-icon>
+      <br>
+      <span>{{datos.mensaje}}</span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Aceptar</button>
+  </div>
+</div>
+
+<div *ngIf="datos.tipoModal == 'error-text-html'">
+  <h2 mat-dialog-title>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <div>
+          <span>{{datos.titulo}}</span>
+        </div>
+      </div>
+    </div>
+  </h2>
+  <mat-dialog-content>
+    <div class="text-center">
+      <mat-icon class="red">
+        report_problem
+      </mat-icon>
+      <br>
+      <span [innerHTML]="datos.mensaje"></span>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Cerrar</button>
+  </div>
+</div>
