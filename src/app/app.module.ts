@@ -28,6 +28,8 @@ import { BandejaPerfilComponent } from './components/pages/profile/bandeja-perfi
 import { ModalEditarPerfilComponent } from './components/pages/profile/partials/modal-editar-perfil/modal-editar-perfil.component';
 import { ModalEditarPasswordComponent } from './components/pages/profile/partials/modal-editar-password/modal-editar-password.component';
 import { ModalEditarEmailComponent } from './components/pages/profile/partials/modal-editar-email/modal-editar-email.component';
+import { ClienteComponent } from './components/pages/administracion/cliente/cliente.component';
+import { ModalClienteComponent } from './components/pages/administracion/modals/modal-cliente/modal-cliente.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { ModalEditarEmailComponent } from './components/pages/profile/partials/m
     BandejaPerfilComponent,
     ModalEditarPerfilComponent,
     ModalEditarPasswordComponent,
-    ModalEditarEmailComponent
+    ModalEditarEmailComponent,
+    ClienteComponent,
+    ModalClienteComponent
   ],
   imports: [
     ComunModule,

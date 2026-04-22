@@ -49,6 +49,8 @@ import { NumericDirective } from './directivas/numeric.directive';
 import { OnlyNumberDirective } from './directivas/only-number.directive';
 import { OnlyMoneyDirective } from './directivas/only-money.directive';
 import { M } from '@angular/cdk/keycodes';
+import { ToastConfirmComponent } from './components/toast-confirm/toast-confirm.component';
+import { ToastLoadingComponent } from './components/toast-loading/toast-loading.component';
 
 const materialModules = [
   MatSidenavModule,
@@ -92,6 +94,8 @@ const materialModules = [
     NumericDirective,
     OnlyNumberDirective,
     OnlyMoneyDirective,
+    ToastConfirmComponent,
+    ToastLoadingComponent
   ],
   imports: [
     CommonModule,
@@ -119,7 +123,9 @@ const materialModules = [
     MaterialElevationDirective,
     NumericDirective,
     OnlyNumberDirective,
-    OnlyMoneyDirective
+    OnlyMoneyDirective,
+    ToastConfirmComponent,
+    ToastLoadingComponent
   ],
   providers: [CurrencyPipe, DecimalPipe]
 })

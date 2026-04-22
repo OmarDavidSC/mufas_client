@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>{{TituloPopup}}</h2>
+<div mat-dialog-content>
+    <div class="row" *ngIf="Form" [formGroup]="Form">
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Nombre <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="name" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('name')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Dni <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="dni" autocomplete="off" [maxlength]="20">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('dni')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Teléfono <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="phone" autocomplete="off" [maxlength]="20">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('phone')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Correo <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="address" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('address')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Distrito <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="district" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('district')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Ciudad <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="city" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('city')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Latitud <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="latitude" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('latitude')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Longitud <span style="color:red;">(*)</span></mat-label>
+            <input [disabled]="Loading" matInput formControlName="longitude" autocomplete="off" [maxlength]="255">
+            <mat-error>
+                <app-error-validation-display [FormControl]="Form.get('longitude')">
+                </app-error-validation-display>
+            </mat-error>
+        </mat-form-field>
+        <div *ngIf="Loading" class="d-flex justify-content-center my-3">
+            <app-spinner></app-spinner>
+        </div>
+        <div>
+            <hr>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="text-center block-full-width" style="display: block;">
+    <button [disabled]="Loading" mat-stroked-button color="primary" (click)="dialogRef.close()">Cancelar</button>
+    <button [disabled]="Loading" mat-raised-button color="primary" cdkFocusInitial
+        (click)="eventoGuardar()">{{TituloButton}}</button>
+</div>

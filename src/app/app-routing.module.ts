@@ -8,6 +8,7 @@ import { BandejaAdendasComponent } from './components/pages/bandejas/bandeja-ade
 import { ForgotPasswordComponent } from './components/authentication/forgot-password/forgot-password.component';
 import { RestorePasswordComponent } from './components/authentication/restore-password/restore-password.component';
 import { BandejaPerfilComponent } from './components/pages/profile/bandeja-perfil/bandeja-perfil.component';
+import { ClienteComponent } from './components/pages/administracion/cliente/cliente.component';
 
 const routes: Routes = [
   { path: 'signin', component: SigninComponent, },
@@ -15,6 +16,9 @@ const routes: Routes = [
   { path: 'restore-password', component: RestorePasswordComponent, },
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'mi-perfil', component: BandejaPerfilComponent, canActivate: [AuthGuard]},
+
+  //administraciones
+  { path: 'administracion-clientes', component: ClienteComponent, canActivate: [AuthGuard]},
   {
     path: '**', pathMatch: 'full', redirectTo: ''
   }
