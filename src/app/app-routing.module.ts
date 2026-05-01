@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './components/authentication/forgot-pass
 import { RestorePasswordComponent } from './components/authentication/restore-password/restore-password.component';
 import { BandejaPerfilComponent } from './components/pages/profile/bandeja-perfil/bandeja-perfil.component';
 import { ClienteComponent } from './components/pages/administracion/cliente/cliente.component';
+import { NodosComponent } from './components/pages/administracion/nodos/nodos.component';
 
 const routes: Routes = [
   { path: 'signin', component: SigninComponent, },
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   //administraciones
   { path: 'administracion-clientes', component: ClienteComponent, canActivate: [AuthGuard]},
+  { path: 'administracion-nodos', component: NodosComponent, canActivate: [AuthGuard]},
   {
     path: '**', pathMatch: 'full', redirectTo: ''
   }

@@ -44,9 +44,11 @@ export class MenuLateralComponent implements OnInit {
       label: 'Administración',
       icon: 'settings',
       children: [
-        { label: 'Áreas', icon: 'business', route: '/areas' },
         { label: 'Usuarios', icon: 'people', route: '/usuarios' },
-        { label: 'Roles', icon: 'admin_panel_settings', route: '/roles' }
+        { label: 'Clientes', icon: 'groups', route: '/administracion-clientes' },
+        { label: 'Nodos', icon: 'device_hub', route: '/administracion-nodos' },
+        { label: 'Fibra', icon: 'cable', route: '/administracion-fibra' },
+        { label: 'Tubos', icon: 'linear_scale', route: '/administracion-tubos' }
       ]
     },
     {

@@ -30,6 +30,8 @@ import { ModalEditarPasswordComponent } from './components/pages/profile/partial
 import { ModalEditarEmailComponent } from './components/pages/profile/partials/modal-editar-email/modal-editar-email.component';
 import { ClienteComponent } from './components/pages/administracion/cliente/cliente.component';
 import { ModalClienteComponent } from './components/pages/administracion/modals/modal-cliente/modal-cliente.component';
+import { NodosComponent } from './components/pages/administracion/nodos/nodos.component';
+import { ModalNodosComponent } from './components/pages/administracion/modals/modal-nodos/modal-nodos.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { ModalClienteComponent } from './components/pages/administracion/modals/
     ModalEditarPasswordComponent,
     ModalEditarEmailComponent,
     ClienteComponent,
-    ModalClienteComponent
+    ModalClienteComponent,
+    NodosComponent,
+    ModalNodosComponent
   ],
   imports: [
     ComunModule,

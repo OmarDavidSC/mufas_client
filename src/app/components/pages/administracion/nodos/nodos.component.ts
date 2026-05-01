@@ -3,29 +3,29 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { ECliente } from 'src/app/shared/models/entidades/ECliente';
+import { ENodo } from 'src/app/shared/models/entidades/ENodo';
 import { ERol } from 'src/app/shared/models/entidades/ERol';
 import { Eusuario } from 'src/app/shared/models/entidades/Eusuario';
 import { FormularioBase } from 'src/app/shared/pages/FormularioBase';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ClienteService } from 'src/app/shared/services/cliente.service';
+import { NodeService } from 'src/app/shared/services/node.service';
 import { AuthStoreService } from 'src/app/shared/stores/auth-store.service';
-import { ModalClienteComponent } from '../modals/modal-cliente/modal-cliente.component';
+import { ModalNodosComponent } from '../modals/modal-nodos/modal-nodos.component';
 import { ToastConfirmComponent } from 'src/app/shared/components/toast-confirm/toast-confirm.component';
 import { ToastLoadingComponent } from 'src/app/shared/components/toast-loading/toast-loading.component';
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.scss']
+  selector: 'app-nodos',
+  templateUrl: './nodos.component.html',
+  styleUrls: ['./nodos.component.scss']
 })
-export class ClienteComponent extends FormularioBase implements OnInit {
+export class NodosComponent extends FormularioBase implements OnInit {
 
-  ListaClientes: ECliente[] = [];
+  ListaNodos: ENodo[] = [];
   UsuarioActual: Eusuario | null = null;
   Role: ERol | null = null;
 
-  displayedColumns: string[] = ['Nombre', 'Dni', 'Telefono', 'Correo', 'Distrito', 'Ciudad', 'Latitud', 'Longitud', 'Acciones'];
+  displayedColumns: string[] = ['Nombre', 'Codigo', 'Latitud', 'Longitud', 'Referencia', 'Distrito', 'Ciudad', 'Acciones'];
 
   PaginaActual: number = 1;
   TotalPaginas: number = 1;
@@ -39,7 +39,7 @@ export class ClienteComponent extends FormularioBase implements OnInit {
     public router: Router,
     public spinner: NgxSpinnerService,
     public authService: AuthService,
-    public clienteService: ClienteService,
+    public nodoService: NodeService,
     public auhtStore: AuthStoreService,
     public toastService: ToastrService,
   ) {
@@ -71,8 +71,8 @@ export class ClienteComponent extends FormularioBase implements OnInit {
 
   async OnEventoCargarClientes() {
     this.Loading = true;
-    const data = await this.clienteService.index(this.PaginaActual)
-    this.ListaClientes = ECliente.parseJsonList(data.data);
+    const data = await this.nodoService.index(this.PaginaActual)
+    this.ListaNodos = ENodo.parseJsonList(data.data);
     this.PaginaActual = data.page;
     this.TotalPaginas = data.total_pages;
     this.TotalRRegistros = data.total;
@@ -88,7 +88,7 @@ export class ClienteComponent extends FormularioBase implements OnInit {
   }
 
   async eventoMostrarPopupRegistrar(): Promise<void> {
-    const dialogRef = this.dialog.open(ModalClienteComponent, {
+    const dialogRef = this.dialog.open(ModalNodosComponent, {
       width: '600px',
       disableClose: true,
       data: null
@@ -99,8 +99,8 @@ export class ClienteComponent extends FormularioBase implements OnInit {
     }
   }
 
-  async eventoMostrarPopupEditar(item: ECliente): Promise<void> {
-    const dialogRef = this.dialog.open(ModalClienteComponent, {
+  async eventoMostrarPopupEditar(item: ENodo): Promise<void> {
+    const dialogRef = this.dialog.open(ModalNodosComponent, {
       width: '600px',
       disableClose: true,
       data: item
@@ -111,10 +111,10 @@ export class ClienteComponent extends FormularioBase implements OnInit {
     }
   }
 
-  async eventoEliminar(item: ECliente): Promise<void> {
+  async eventoEliminar(item: ENodo): Promise<void> {
     const confirmToast = this.toastService.show(
-      '¿Confirmas la eliminación del cliente?',
-      'Eliminar cliente',
+      '¿Confirmas la eliminación del nodo?',
+      'Eliminar nodo',
       {
         toastComponent: ToastConfirmComponent,
         positionClass: 'toast-center-center',
@@ -126,7 +126,7 @@ export class ClienteComponent extends FormularioBase implements OnInit {
       this.toastService.clear();
 
       const loadingToast = this.toastService.show(
-        'Eliminando cliente...',
+        'Eliminando nodo...',
         '',
         {
           toastComponent: ToastLoadingComponent,
@@ -137,7 +137,7 @@ export class ClienteComponent extends FormularioBase implements OnInit {
       );
 
       try {
-        const response = await this.clienteService.remove(item.Id);
+        const response = await this.nodoService.remove(item.Id);
         this.toastService.clear();
 
         if (response.success) {
