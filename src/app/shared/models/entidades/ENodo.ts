@@ -3,7 +3,7 @@ import { SPParse } from "src/app/utils/SPParse";
 export class ENodo {
     Id: any;
     Nombre: string;
-    Codigo: number;
+    Codigo: any;
     Latitud: any;
     Longitud: any;
     Referencia: string;
@@ -14,7 +14,7 @@ export class ENodo {
     constructor() {
         this.Id = "";
         this.Nombre = "";
-        this.Codigo = 0;
+        this.Codigo = "";
         this.Latitud = 0;
         this.Longitud = 0;
         this.Referencia = "";
@@ -28,7 +28,7 @@ export class ENodo {
 
         objeto.Id = SPParse.getNumber(element["id"]);
         objeto.Nombre = SPParse.getString(element["name"]);
-        objeto.Codigo = SPParse.getNumber(element["code"]);
+        objeto.Codigo = SPParse.getString(element["code"]);
         objeto.Latitud = SPParse.getFloat(element["latitude"]);
         objeto.Longitud = SPParse.getFloat(element["longitude"]);
         objeto.Referencia = SPParse.getString(element["reference"]);
