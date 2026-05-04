@@ -60,6 +60,14 @@
                     {{element.Ciudad}}
                 </td>
             </ng-container>
+            <ng-container matColumnDef="Mapa">
+                <th mat-header-cell *matHeaderCellDef> Mapa </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="accent" (click)="OnEventoMostrarMapa(element)">
+                        <mat-icon>map</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
             <ng-container matColumnDef="Acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">

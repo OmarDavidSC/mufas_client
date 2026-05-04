@@ -1,0 +1,46 @@
+<h2 mat-dialog-title class="header">
+  <mat-icon>place</mat-icon>
+  Ubicación del Nodo
+</h2>
+
+<mat-dialog-content class="content">
+
+  <!-- INFO DEL NODO -->
+  <div class="info">
+    <div class="info-item">
+      <mat-icon>my_location</mat-icon>
+      <span>Lat: {{lat}}</span>
+    </div>
+
+    <div class="info-item">
+      <mat-icon>explore</mat-icon>
+      <span>Lng: {{lng}}</span>
+    </div>
+  </div>
+
+  <!-- MAPA -->
+  <div class="map-wrapper">
+    <iframe [src]="mapUrl" loading="lazy" allowfullscreen>
+    </iframe>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+
+  <button mat-stroked-button (click)="copiarCoordenadas()">
+    <mat-icon>content_copy</mat-icon>
+    Copiar
+  </button>
+
+  <button mat-stroked-button color="primary" (click)="abrirGoogleMaps()">
+    <mat-icon>open_in_new</mat-icon>
+    Google Maps
+  </button>
+
+  <button mat-raised-button color="accent" (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+    Cerrar
+  </button>
+
+</mat-dialog-actions>

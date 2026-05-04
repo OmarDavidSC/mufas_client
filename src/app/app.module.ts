@@ -54,7 +54,7 @@ import { ModalNodosComponent } from './components/pages/administracion/modals/mo
     ClienteComponent,
     ModalClienteComponent,
     NodosComponent,
-    ModalNodosComponent
+    ModalNodosComponent,
   ],
   imports: [
     ComunModule,

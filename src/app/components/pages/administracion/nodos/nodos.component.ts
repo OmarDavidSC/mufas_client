@@ -13,6 +13,7 @@ import { AuthStoreService } from 'src/app/shared/stores/auth-store.service';
 import { ModalNodosComponent } from '../modals/modal-nodos/modal-nodos.component';
 import { ToastConfirmComponent } from 'src/app/shared/components/toast-confirm/toast-confirm.component';
 import { ToastLoadingComponent } from 'src/app/shared/components/toast-loading/toast-loading.component';
+import { GoogleMapsComponent } from 'src/app/shared/components/google-maps/google-maps.component';
 
 @Component({
   selector: 'app-nodos',
@@ -25,7 +26,7 @@ export class NodosComponent extends FormularioBase implements OnInit {
   UsuarioActual: Eusuario | null = null;
   Role: ERol | null = null;
 
-  displayedColumns: string[] = ['Nombre', 'Codigo', 'Latitud', 'Longitud', 'Referencia', 'Distrito', 'Ciudad', 'Acciones'];
+  displayedColumns: string[] = ['Nombre', 'Codigo', 'Latitud', 'Longitud', 'Referencia', 'Distrito', 'Ciudad', 'Mapa', 'Acciones'];
 
   PaginaActual: number = 1;
   TotalPaginas: number = 1;
@@ -160,5 +161,17 @@ export class NodosComponent extends FormularioBase implements OnInit {
     } else {
       this.router.navigate([site]);
     }
+  }
+
+
+  OnEventoMostrarMapa(item: ENodo) {
+    this.dialog.open(GoogleMapsComponent, {
+      width: '800px',
+      height: '600px',
+      data: {
+        lat: item.Latitud,
+        lng: item.Longitud
+      }
+    });
   }
 }

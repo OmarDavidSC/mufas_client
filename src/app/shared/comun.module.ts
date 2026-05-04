@@ -51,6 +51,7 @@ import { OnlyMoneyDirective } from './directivas/only-money.directive';
 import { M } from '@angular/cdk/keycodes';
 import { ToastConfirmComponent } from './components/toast-confirm/toast-confirm.component';
 import { ToastLoadingComponent } from './components/toast-loading/toast-loading.component';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 
 const materialModules = [
   MatSidenavModule,
@@ -95,7 +96,8 @@ const materialModules = [
     OnlyNumberDirective,
     OnlyMoneyDirective,
     ToastConfirmComponent,
-    ToastLoadingComponent
+    ToastLoadingComponent,
+    GoogleMapsComponent
   ],
   imports: [
     CommonModule,
